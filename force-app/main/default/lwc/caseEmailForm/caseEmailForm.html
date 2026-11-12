@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Send Case Email" icon-name="standard:email">
+        <div class="slds-m-around_medium">
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_small" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <h2>{errorMessage}</h2>
+                </div>
+            </template>
+            <template if:true={successMessage}>
+                <div class="slds-notify slds-notify_alert slds-theme_success slds-m-bottom_small" role="alert">
+                    <span class="slds-assistive-text">Success</span>
+                    <h2>{successMessage}</h2>
+                </div>
+            </template>
+            <lightning-input
+                label="Subject"
+                value={subject}
+                onchange={handleSubjectChange}
+                required
+                class="slds-m-bottom_small">
+            </lightning-input>
+            <lightning-textarea
+                label="Body"
+                value={body}
+                onchange={handleBodyChange}
+                required
+                class="slds-m-bottom_small">
+            </lightning-textarea>
+            <lightning-button
+                label="Send Email"
+                variant="brand"
+                onclick={handleSend}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>
